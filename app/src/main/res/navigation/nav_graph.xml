@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/bars_fragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.example.zadanie.ui.fragments.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_login_fragment_to_bars_fragment"
+            app:destination="@id/bars_fragment"
+            app:popUpTo="@+id/bars_fragment"/>
+
+        <action
+            android:id="@+id/action_login_fragment_to_sign_up_fragment"
+            app:destination="@id/sign_up_fragment"
+            app:popUpTo="@+id/sign_up_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/bars_fragment"
+        android:name="com.example.zadanie.ui.fragments.BarsFragment"
+        android:label="Bars" >
+        <action
+            android:id="@+id/action_bars_fragment_to_login_fragment2"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@+id/login_fragment"/>
+        <action
+            android:id="@+id/action_bars_fragment_to_locate_fragment"
+            app:destination="@id/locate_fragment" />
+        <action
+            android:id="@+id/action_bars_fragment_to_friendsFragment"
+            app:destination="@id/friendsFragment" />
+        <action
+            android:id="@+id/action_bars_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sign_up_fragment"
+        android:name="com.example.zadanie.ui.fragments.SignUpFragment"
+        android:label="SignUp" >
+        <action
+            android:id="@+id/action_sign_up_fragment_to_bars_fragment"
+            app:destination="@id/bars_fragment"
+            app:popUpTo="@+id/bars_fragment"/>
+        <action
+            android:id="@+id/action_sign_up_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@+id/login_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/locate_fragment"
+        android:name="com.example.zadanie.ui.fragments.LocateFragment"
+        android:label="Locate" />
+
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.example.zadanie.ui.fragments.BarDetailFragment"
+        android:label="BarDetailFragment">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_login"
+        app:destination="@id/login_fragment" />
+    <action
+        android:id="@+id/action_to_bars"
+        app:destination="@id/bars_fragment" />
+
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.example.zadanie.ui.fragments.FriendsFragment"
+        android:label="Friends" >
+        <action
+            android:id="@+id/action_friendsFragment_to_addFriendFragment"
+            app:destination="@id/addFriendFragment" />
+        <action
+            android:id="@+id/action_friendsFragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFriendFragment"
+        android:name="com.example.zadanie.ui.fragments.AddFriendFragment"
+        android:label="AddFriendFragment" />
+</navigation>

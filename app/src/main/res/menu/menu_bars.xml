@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <item
+        android:id="@+id/friends"
+        android:contentDescription="@string/friends"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="@string/friends"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/logout"
+        android:contentDescription="@string/log_out"
+        android:icon="@drawable/ic_baseline_logout_24"
+        android:title="@string/log_out"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="@string/a_z"
+        android:id="@+id/sort_aToZ"
+        />
+    <item
+        android:id="@+id/sort_zToA"
+        android:title="@string/z_a" />
+
+    <item
+        android:title="@string/guests_from_most"
+        android:id="@+id/sort_guests_from_most"
+        />
+    <item
+        android:title="@string/guests_from_least"
+        android:id="@+id/sort_guests_from_least"
+        />
+
+    <item
+        android:title="@string/distance_from_most"
+        android:id="@+id/sort_distance_from_most"
+        />
+    <item
+        android:title="@string/distance_from_least"
+        android:id="@+id/sort_distance_from_least"
+        />
+</menu>
