@@ -1,5 +1,7 @@
 package com.example.zadanie.data.api
 
+//ukladam data
+
 data class UserCreateRequest(
     val name: String,
     val password: String

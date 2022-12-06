@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -15,7 +14,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.zadanie.R
 import com.example.zadanie.databinding.FragmentBarsBinding
 import com.example.zadanie.helpers.Injection
@@ -44,8 +42,7 @@ class BarsFragment : Fragment() {
             permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
                 val action = BarsFragmentDirections.actionBarsFragmentToLocateFragment()
                 Navigation.findNavController(requireView()).navigate(action)
-                //Navigation.findNavController(requireView()).navigate(R.id.action_to_locate)
-                // Precise location access granted.
+
             }
             permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
                 viewmodel.show("Only approximate location access granted.")
@@ -61,16 +58,13 @@ class BarsFragment : Fragment() {
     ) { permissions ->
         when {
             permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                sortByDistance(Sort.DISTANCE_ASCENDING)
-                // Precise location access granted.
+                DistanceSort(Sort.ASC_DIST)
             }
             permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
                 viewmodel.show("Only approximate location access granted.")
-                // Only approximate location access granted.
             }
             else -> {
                 viewmodel.show("Location access denied.")
-                // No location access granted.
             }
         }
     }
@@ -80,7 +74,7 @@ class BarsFragment : Fragment() {
     ) { permissions ->
         when {
             permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                sortByDistance(Sort.DISTANCE_DESCENDING)
+                DistanceSort(Sort.DESC_DIST)
                 // Precise location access granted.
             }
             permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
@@ -189,49 +183,45 @@ class BarsFragment : Fragment() {
                         view.findNavController().navigate(action)
                         true
                     }
-                    //Ascending means smallest to largest, 0 to 9, and/or A to Z
-                    //Descending means largest to smallest, 9 to 0, and/or Z to A.
+
                     R.id.sort_aToZ -> {
-                        viewmodel.sortList(Sort.TITLE_ASCENDING)
+                        viewmodel.sortList(Sort.ASC_TITLE)
                         true
                     }
                     R.id.sort_zToA -> {
-                        viewmodel.sortList(Sort.TITLE_DESCENDING)
+                        viewmodel.sortList(Sort.DESC_TITLE)
                         true
                     }
                     R.id.sort_guests_from_least -> {
-                        viewmodel.sortList(Sort.GUESTS_ASCENDING)
+                        viewmodel.sortList(Sort.ASC_G)
                         true
                     }
                     R.id.sort_guests_from_most -> {
-                        viewmodel.sortList(Sort.GUESTS_DESCENDING)
+                        viewmodel.sortList(Sort.DESC_G)
                         true
                     }
 
                     R.id.sort_distance_from_least -> {
 
-                        if (checkPermissions()) { //pozera ci ma povolene
-//                            viewmodel.sortList(Sort.DISTANCE_ASCENDING)
-                            sortByDistance(Sort.DISTANCE_ASCENDING)
+                        if (checkPermissions()) {
+                            DistanceSort(Sort.ASC_DIST)
 
-                        } else { //ziada povolenie
+                        } else {
                             locationPermissionRequestToSortAsc.launch(
                                 arrayOf(
                                     Manifest.permission.ACCESS_FINE_LOCATION,
                                     Manifest.permission.ACCESS_COARSE_LOCATION
                                 )
                             )
-                            viewmodel.show("Neboli udelene povolenia pre sledovanie polohy")
+                            viewmodel.show("Permissions have not been granted.")
                         }
-
 
                         true
                     }
                     R.id.sort_distance_from_most -> {
 
                         if (checkPermissions()) {
-//                            viewmodel.sortList(Sort.DISTANCE_DESCENDING)
-                            sortByDistance(Sort.DISTANCE_DESCENDING)
+                            DistanceSort(Sort.DESC_DIST)
                         } else {
                             locationPermissionRequestToSortDESC.launch(
                                 arrayOf(
@@ -239,7 +229,7 @@ class BarsFragment : Fragment() {
                                     Manifest.permission.ACCESS_COARSE_LOCATION
                                 )
                             )
-                            viewmodel.show("Neboli udelene povolenia pre sledovanie polohy")
+                            viewmodel.show("Permissions have not been granted.")
                         }
 
                         true
@@ -250,9 +240,9 @@ class BarsFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-
+//locatefragment LOADDATA()
     @SuppressLint("MissingPermission")
-    private fun sortByDistance(sort: Sort) {
+    private fun DistanceSort(sort: Sort) {
         if (checkPermissions()) {
             viewmodel.loading.postValue(true)
             fusedLocationClient.getCurrentLocation(

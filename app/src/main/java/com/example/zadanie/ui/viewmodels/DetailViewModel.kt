@@ -44,9 +44,6 @@ class DetailViewModel(private val repository: DataRepository) : ViewModel() {
             bar.postValue(repository.apiBarDetail(id) { _message.postValue(Evento(it)) })
             _loading.postValue(false)
         }
-
-
-
     }
 
     fun getBarItem(id: String): LiveData<BarItem>

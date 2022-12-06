@@ -11,6 +11,8 @@ import com.example.zadanie.helpers.autoNotify
 import com.google.android.material.chip.Chip
 import kotlin.properties.Delegates
 
+//bindovanie dat pre FE
+
 class BarsAdapter(val events: BarsEvents? = null) :
     RecyclerView.Adapter<BarsAdapter.BarItemViewHolder>() {
     var items: List<BarItem> by Delegates.observable(emptyList()) { _, old, new ->

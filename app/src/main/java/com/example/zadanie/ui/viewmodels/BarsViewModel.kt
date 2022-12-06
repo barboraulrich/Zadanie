@@ -8,12 +8,10 @@ import com.example.zadanie.ui.viewmodels.data.MyLocation
 import kotlinx.coroutines.launch
 
 enum class Sort {
-    TITLE_ASCENDING, TITLE_DESCENDING,
-    GUESTS_ASCENDING, GUESTS_DESCENDING,
-    DISTANCE_ASCENDING, DISTANCE_DESCENDING
+    ASC_TITLE, DESC_TITLE,
+    ASC_G, DESC_G,
+    ASC_DIST, DESC_DIST
 }
-//Ascending means smallest to largest, 0 to 9, and/or A to Z
-//Descending means largest to smallest, 9 to 0, and/or Z to A.
 
 class BarsViewModel(private val repository: DataRepository): ViewModel() {
     private val _message = MutableLiveData<Evento<String>>()
@@ -26,7 +24,7 @@ class BarsViewModel(private val repository: DataRepository): ViewModel() {
     private val _myLocation = MutableLiveData<MyLocation>(null)
     val myLocation: MutableLiveData<MyLocation> get() = _myLocation
 
-    private var _sortType: MutableLiveData<Sort> = MutableLiveData( Sort.TITLE_ASCENDING)
+    private var _sortType: MutableLiveData<Sort> = MutableLiveData( Sort.ASC_TITLE)
     val sortType: LiveData<Sort> get() = _sortType
 
     private val _bars: LiveData<List<BarItem>> = Transformations.switchMap(_sortType) { sort ->
@@ -34,7 +32,7 @@ class BarsViewModel(private val repository: DataRepository): ViewModel() {
             _loading.postValue(true)
             repository.apiBarList { _message.postValue(Evento(it)) }
             _loading.postValue(false)
-            if(sort == Sort.DISTANCE_ASCENDING || sort == Sort.DISTANCE_DESCENDING)
+            if(sort == Sort.ASC_DIST || sort == Sort.DESC_DIST)
             {
                 emitSource(repository.dbSortedByDistance(sort, myLocation.value!!))
             }

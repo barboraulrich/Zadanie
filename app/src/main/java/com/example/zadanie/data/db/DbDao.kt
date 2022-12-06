@@ -17,10 +17,10 @@ interface DbDao {
     @Query("DELETE FROM bars")
     suspend fun deleteBars()
 
-    @Query("SELECT * FROM bars order by name ASC")
+    @Query("SELECT * FROM bars order by name COLLATE NOCASE ASC")
     fun getBarsTitleAscending(): LiveData<List<BarItem>?>
 
-    @Query("SELECT * FROM bars order by name DESC")
+    @Query("SELECT * FROM bars order by name COLLATE NOCASE  DESC")
     fun getBarsTitleDescending(): LiveData<List<BarItem>?>
 
     @Query("SELECT * FROM bars order by users DESC")

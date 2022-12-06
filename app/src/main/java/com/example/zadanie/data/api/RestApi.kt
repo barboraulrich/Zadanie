@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
+//dopyt na endpoint
 interface RestApi {
 
     @GET("https://overpass-api.de/api/interpreter?")

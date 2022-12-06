@@ -6,29 +6,29 @@
     <string name="login_failed">"Login failed"</string>
     <string name="action_sign_up">Sign up </string>
     <string name="login_sign_up">"Sign up failed"</string>
-    <string name="or_log_in">or log in</string>
-    <string name="or_create_account">or create account.</string>
+    <string name="or_log_in">OR LOG IN </string>
+    <string name="or_create_account">OR CREATE ACCOUNT</string>
     <string name="bars">Bars</string>
-    <string name="friends">Friends</string>
+    <string name="friends">All my friends</string>
     <string name="log_out">Log out</string>
     <string name="repeat_password">repeat password</string>
     <string name="back">back</string>
-    <string name="zobrazit_na_mape">Zobrazit na mape</string>
+    <string name="zobrazit_na_mape">show on map</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="z_a">Z -> A</string>
-    <string name="a_z">A -> Z</string>
+    <string name="from_A">Bars from A</string>
+    <string name="from_Z">Bars from Z</string>
 
-    <string name="guests_from_most"> ↓ guests</string>
-    <string name="guests_from_least"> ↑ guests</string>
+    <string name="guests_from_most"> The most guests down</string>
+    <string name="guests_from_least"> The most guests up</string>
 
-    <string name="distance_from_most"> ↓ distance</string>
-    <string name="distance_from_least"> ↑ distance</string>
+    <string name="distance_from_most"> The greatest distance down</string>
+    <string name="distance_from_least"> The greatest distance up</string>
 
-    <string name="geolokacia">geolokácia</string>
+    <string name="geolokacia">Geolocation</string>
     <string name="i_m_here">I\'m here</string>
-    <string name="add_friend">add_friend</string>
-    <string name="username">username</string>
-    <string name="webstranka">Webstranka</string>
+    <string name="add_friend">Add new friend</string>
+    <string name="username">Username</string>
+    <string name="webstranka">Show website</string>
 </resources>

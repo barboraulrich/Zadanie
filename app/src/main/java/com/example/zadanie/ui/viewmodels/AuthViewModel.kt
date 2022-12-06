@@ -24,8 +24,7 @@ class AuthViewModel(private val repository: DataRepository): ViewModel() {
         viewModelScope.launch {
             _loading.postValue(true)
             repository.apiUserLogin(
-//                name,md5(password),
-                name,password,
+                name,md5(password),
                 { _message.postValue(Evento(it)) },
                 { _user.postValue(it) }
             )
@@ -37,8 +36,7 @@ class AuthViewModel(private val repository: DataRepository): ViewModel() {
         viewModelScope.launch {
             _loading.postValue(true)
             repository.apiUserCreate(
-//                name,md5(password),
-                name,password,
+                name,md5(password),
                 { _message.postValue(Evento(it)) },
                 { _user.postValue(it) }
             )

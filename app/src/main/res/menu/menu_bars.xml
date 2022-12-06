@@ -13,17 +13,18 @@
     <item
         android:id="@+id/logout"
         android:contentDescription="@string/log_out"
-        android:icon="@drawable/ic_baseline_logout_24"
+        android:icon="@drawable/waving_hand"
         android:title="@string/log_out"
         app:showAsAction="ifRoom" />
 
+
     <item
-        android:title="@string/a_z"
+        android:title="@string/from_A"
         android:id="@+id/sort_aToZ"
         />
     <item
         android:id="@+id/sort_zToA"
-        android:title="@string/z_a" />
+        android:title="@string/from_Z" />
 
     <item
         android:title="@string/guests_from_most"

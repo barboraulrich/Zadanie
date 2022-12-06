@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/bars_fragment"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    android:label="Bar locate"
+    app:startDestination="@id/bars_fragment">
 
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.example.zadanie.ui.fragments.LoginFragment"
-        android:label="Login">
+        android:label="Log in ">
         <action
             android:id="@+id/action_login_fragment_to_bars_fragment"
             app:destination="@id/bars_fragment"
-            app:popUpTo="@+id/bars_fragment"/>
+            app:popUpTo="@+id/bars_fragment" />
 
         <action
             android:id="@+id/action_login_fragment_to_sign_up_fragment"
             app:destination="@id/sign_up_fragment"
-            app:popUpTo="@+id/sign_up_fragment"/>
+            app:popUpTo="@+id/sign_up_fragment" />
     </fragment>
     <fragment
         android:id="@+id/bars_fragment"
         android:name="com.example.zadanie.ui.fragments.BarsFragment"
-        android:label="Bars" >
+        android:label="Bars">
         <action
             android:id="@+id/action_bars_fragment_to_login_fragment2"
             app:destination="@id/login_fragment"
-            app:popUpTo="@+id/login_fragment"/>
+            app:popUpTo="@+id/login_fragment" />
         <action
             android:id="@+id/action_bars_fragment_to_locate_fragment"
             app:destination="@id/locate_fragment" />
@@ -39,25 +40,24 @@
     <fragment
         android:id="@+id/sign_up_fragment"
         android:name="com.example.zadanie.ui.fragments.SignUpFragment"
-        android:label="SignUp" >
+        android:label="Sign up">
         <action
             android:id="@+id/action_sign_up_fragment_to_bars_fragment"
             app:destination="@id/bars_fragment"
-            app:popUpTo="@+id/bars_fragment"/>
+            app:popUpTo="@+id/bars_fragment" />
         <action
             android:id="@+id/action_sign_up_fragment_to_login_fragment"
             app:destination="@id/login_fragment"
-            app:popUpTo="@+id/login_fragment"/>
+            app:popUpTo="@+id/login_fragment" />
     </fragment>
     <fragment
         android:id="@+id/locate_fragment"
-        android:name="com.example.zadanie.ui.fragments.LocateFragment"
-        android:label="Locate" />
+        android:name="com.example.zadanie.ui.fragments.LocateFragment" />
 
     <fragment
         android:id="@+id/detail_fragment"
         android:name="com.example.zadanie.ui.fragments.BarDetailFragment"
-        android:label="BarDetailFragment">
+        android:label="Bar detail">
         <argument
             android:name="id"
             app:argType="string" />
@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/friendsFragment"
         android:name="com.example.zadanie.ui.fragments.FriendsFragment"
-        android:label="Friends" >
+        android:label="All friends">
         <action
             android:id="@+id/action_friendsFragment_to_addFriendFragment"
             app:destination="@id/addFriendFragment" />
@@ -84,5 +84,5 @@
     <fragment
         android:id="@+id/addFriendFragment"
         android:name="com.example.zadanie.ui.fragments.AddFriendFragment"
-        android:label="AddFriendFragment" />
+        android:label="Add new friends" />
 </navigation>

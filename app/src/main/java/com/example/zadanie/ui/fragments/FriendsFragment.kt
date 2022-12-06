@@ -1,12 +1,10 @@
 package com.example.zadanie.ui.fragments
 
-import android.Manifest
-import android.content.pm.PackageManager
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -57,8 +55,7 @@ class FriendsFragment : Fragment() {
             model = viewModel
         }.also { bnd ->
 
-            bnd.addFriend.setOnClickListener{
-                //go to add friend fragment
+            bnd.addFriend.setOnClickListener {
                 val action = FriendsFragmentDirections.actionFriendsFragmentToAddFriendFragment()
                 view.findNavController().navigate(action)
             }
@@ -72,20 +69,10 @@ class FriendsFragment : Fragment() {
             binding.swiperefresh.isRefreshing = it
         }
 
-        viewModel.message.observe(viewLifecycleOwner) {
+        viewModel.message.observe(viewLifecycleOwner) { //ak nie som prihlasena vratim sa na login
             if (PreferenceData.getInstance().getUserItem(requireContext()) == null) {
                 Navigation.findNavController(requireView()).navigate(R.id.action_to_login)
             }
         }
-    }
-
-    private fun checkPermissions(): Boolean {
-        return ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
     }
 }

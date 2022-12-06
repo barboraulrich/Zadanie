@@ -18,11 +18,10 @@ import com.example.zadanie.ui.viewmodels.AddFriendViewModel
 class AddFriendFragment : Fragment() {
 
     private lateinit var _binding: FragmentAddFriendBinding
-    val binding : FragmentAddFriendBinding get() = _binding
+    val binding: FragmentAddFriendBinding get() = _binding
 
     private lateinit var _addFriendViewModel: AddFriendViewModel
     val addFriendViewModel: AddFriendViewModel get() = _addFriendViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,34 +49,21 @@ class AddFriendFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_to_bars)
             return
         }
-
         binding.addNewFriend.setOnClickListener {
-            addFriend()
+            add()
         }
-
-        addFriendViewModel.isAdded.observe(viewLifecycleOwner){
-            if(it)
-            {
+        addFriendViewModel.isAdded.observe(viewLifecycleOwner) {
+            if (it) {
                 view.findNavController().navigateUp()
             }
         }
     }
 
-    private fun addFriend()
-    {
-        val friendUsername = binding.addFriendName.text.toString()
-
-        if(friendUsername.isBlank())
-        {
-            println("prazdne")
+    private fun add() {
+        if (binding.addFriendName.text.toString().isBlank()) {
             addFriendViewModel.show("Fill username")
             return
         }
-
-        addFriendViewModel.addFriend(friendUsername)
-
+        addFriendViewModel.addFriends(binding.addFriendName.text.toString())
     }
-
-
-
 }

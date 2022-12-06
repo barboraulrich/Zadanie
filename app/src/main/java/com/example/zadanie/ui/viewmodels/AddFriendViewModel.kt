@@ -8,6 +8,8 @@ import com.example.zadanie.data.DataRepository
 import com.example.zadanie.helpers.Evento
 import kotlinx.coroutines.launch
 
+//natahuje data z DB
+
 class AddFriendViewModel(private val repository: DataRepository): ViewModel()
 {
     private val _message = MutableLiveData<Evento<String>>()
@@ -18,9 +20,9 @@ class AddFriendViewModel(private val repository: DataRepository): ViewModel()
     val isAdded: LiveData<Boolean>
         get() = _isAdded
 
-    fun addFriend(username: String)
+    fun addFriends(username: String)
     {
-        viewModelScope.launch {
+        viewModelScope.launch { //pridava do repository (pridava do toho viewModelScope)
             repository.addFriend(
                 username,
                 {_message.postValue(Evento(it))},

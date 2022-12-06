@@ -226,9 +226,6 @@ class DataRepository private constructor(
                             it.user_name,
                             it.bar_id,
                             it.bar_name,
-//                            it.time,
-//                            it.bar_lat,
-//                            it.bar_lon
                         )
                     }
                     cache.deleteFriends()
@@ -284,7 +281,7 @@ class DataRepository private constructor(
                     ?: DataRepository(service, cache).also { INSTANCE = it }
             }
 
-        @SuppressLint("SimpleDateFormat")
+/*        @SuppressLint("SimpleDateFormat")
         fun dateToTimeStamp(date: String): Long {
             return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date)?.time ?: 0L
         }
@@ -293,7 +290,7 @@ class DataRepository private constructor(
         fun timestampToDate(time: Long): String{
             val netDate = Date(time*1000)
             return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(netDate)
-        }
+        }*/
     }
 
 

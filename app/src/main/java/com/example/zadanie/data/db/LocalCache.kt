@@ -16,21 +16,21 @@ class LocalCache(private val dao: DbDao) {
 
     fun getBars(sort: Sort): LiveData<List<BarItem>?> {
         return when (sort) {
-            Sort.GUESTS_ASCENDING -> {
+            Sort.ASC_G -> {
                 dao.getBarsGuestsAscending()
             }
-            Sort.GUESTS_DESCENDING -> {
+            Sort.DESC_G -> {
                 dao.getBarsGuestsDescending()
             }
-            Sort.DISTANCE_ASCENDING -> {
+            Sort.ASC_DIST -> {
                 //TODO
                 dao.getBars()
             }
-            Sort.DISTANCE_DESCENDING -> {
+            Sort.DESC_DIST -> {
                 //TODO
                 dao.getBars()
             }
-            Sort.TITLE_DESCENDING -> {
+            Sort.DESC_TITLE -> {
                 dao.getBarsTitleDescending()
             }
             else -> {
@@ -43,10 +43,10 @@ class LocalCache(private val dao: DbDao) {
     {
         return when(sort)
         {
-            Sort.DISTANCE_ASCENDING -> {
+            Sort.ASC_DIST -> {
                 dao.getSortedBarsByDistanceASC(location.lat, location.lon)
             }
-            Sort.DISTANCE_DESCENDING -> {
+            Sort.DESC_DIST -> {
                 dao.getSortedBarsByDistanceDESC(location.lat, location.lon)
             }
             else -> {dao.getBarsTitleAscending()}

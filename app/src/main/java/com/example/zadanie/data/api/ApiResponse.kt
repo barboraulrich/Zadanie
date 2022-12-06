@@ -1,5 +1,6 @@
 package com.example.zadanie.data.api
 
+//odpoved z DB
 data class UserResponse(
     val uid: String,
     val access: String,

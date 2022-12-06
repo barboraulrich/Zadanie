@@ -14,6 +14,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/teal_200"
         android:padding="24dp">
 
         <TextView
@@ -30,10 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
+            android:background="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_title">
+            app:layout_constraintTop_toBottomOf="@id/header_title"
+            app:layout_constraintVertical_bias="1.0">
 
             <com.example.zadanie.ui.widget.barlist.BarsRecyclerView
                 android:layout_width="match_parent"
@@ -50,14 +54,13 @@
             android:id="@+id/findBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
             android:background="@drawable/circle_filled"
-            android:contentDescription="TODO"
             android:padding="12dp"
             android:src="@drawable/ic_baseline_location_on_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.912"
+            app:layout_constraintStart_toEndOf="@+id/header_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view"

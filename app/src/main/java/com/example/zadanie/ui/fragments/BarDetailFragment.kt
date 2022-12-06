@@ -56,42 +56,29 @@ class BarDetailFragment : Fragment() {
         }
 
 
-
-
-
-
-
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             model = viewModel
-//            counter.text = navigationArgs.users.toString()
-//            counter.text = "0"
-//            counter.text = viewModel.barItem.value?.users.toString()
-        }.also { bnd ->
 
-//            viewModel.barItem.observe(viewLifecycleOwner){
-//                it?.let {
-//                    binding.counter.text = it.users.toString()
-//                }
-//            }
+        }.also { bnd -> //podmnozina buttonov
 
             viewModel.getBarItem(navigationArgs.id).observe(viewLifecycleOwner)
             {
                 it?.let {
-                    binding.counter.text = it.users.toString()
+                    binding.quantity.text = it.users.toString()
                 }
             }
 
             viewModel.details.observe(viewLifecycleOwner){
                 it?.let {
-                    bnd.phoneNumber.isVisible = false
+                    bnd.openingHours.isVisible = false
                     for(item in it)
                     {
-                        if(item.key == "phone")
+                        println(item.key)
+                        if(item.key == "opening_hours")
                         {
-                            bnd.phoneNumber.isVisible = true
-                            bnd.phoneNumber.text = item.value
-                            break
+                            bnd.openingHours.isVisible = true
+                            bnd.openingHours.text = item.value.replace(";","\n")
                         }
                     }
                 }
@@ -105,25 +92,24 @@ class BarDetailFragment : Fragment() {
                         {
                             if(item.key == "website")
                             {
-                                bnd.web.isEnabled = true
+                                println(item.key)
+                                println(item.value)
+                                bnd.web.isVisible = true
                                 bnd.web.setOnClickListener{
                                     val queryUrl: Uri = Uri.parse(item.value)
                                     val intent = Intent(Intent.ACTION_VIEW, queryUrl)
                                     startActivity(intent)
                                 }
                                 isWebsitePresent = true
-                                break
                             }
                         }
-
                         if(!isWebsitePresent)
-                            bnd.web.isEnabled = false
+                            bnd.web.isVisible = false
                     }
                     else
                     {
-                        bnd.web.isEnabled = false
+                        bnd.web.isVisible = false
                     }
-
                 }
             }
 

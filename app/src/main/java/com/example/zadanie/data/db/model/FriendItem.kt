@@ -9,9 +9,7 @@ class FriendItem (
     val name: String,
     val bar_id: String?,
     val bar_name: String?,
-//    val time: String,
-//    val bar_lat: Double,
-//    val bar_lon: Double
+
 ){
 
     override fun equals(other: Any?): Boolean {
@@ -22,9 +20,7 @@ class FriendItem (
         if (name != other.name) return false
         if (bar_id != other.bar_id) return false
         if (bar_name != other.bar_name) return false
-//        if (time != other.time) return false
-//        if (bar_lat != other.bar_lat) return false
-//        if (bar_lon != other.bar_lon) return false
+
 
         return true
     }
@@ -39,9 +35,6 @@ class FriendItem (
         result = 31 * result + name.hashCode()
         result = 31 * result + bar_id.hashCode()
         result = 31 * result + bar_name.hashCode()
-//        result = 31 * result + time.hashCode()
-//        result = 31 * result + bar_lat.hashCode()
-//        result = 31 * result + bar_lon.hashCode()
         return result
     }
 }
