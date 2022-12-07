@@ -17,6 +17,10 @@ import com.example.zadanie.databinding.FragmentDetailBarBinding
 import com.example.zadanie.helpers.Injection
 import com.example.zadanie.helpers.PreferenceData
 import com.example.zadanie.ui.viewmodels.DetailViewModel
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 class BarDetailFragment : Fragment() {
     private lateinit var _binding: FragmentDetailBarBinding
@@ -27,6 +31,8 @@ class BarDetailFragment : Fragment() {
 
     private val _navigationArgs: BarDetailFragmentArgs by navArgs()
     val navigationArgs: BarDetailFragmentArgs get() = _navigationArgs
+
+    private lateinit var mapFragment : SupportMapFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +61,14 @@ class BarDetailFragment : Fragment() {
             return
         }
 
-
+        viewModel.bar.observe(viewLifecycleOwner){
+            bar-> if (bar!= null) {
+            mapFragment = (childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)!!
+            mapFragment?.getMapAsync { googleMap ->
+                addMarkers(googleMap,LatLng(bar.lat, bar.lon))
+            }
+            }
+        }
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             model = viewModel
@@ -136,8 +149,13 @@ class BarDetailFragment : Fragment() {
 
 
         viewModel.loadBar(navigationArgs.id)
+    }
 
-
+    private fun addMarkers(googleMap: GoogleMap, latLng : LatLng) {
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(latLng )
+            )
     }
 
 }

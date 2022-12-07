@@ -29,8 +29,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/drink"
-            app:lottie_url="@raw/drink" />
+            app:lottie_rawRes="@raw/drunken"
+            app:lottie_url="@raw/drunken" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/type"
@@ -107,6 +107,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/web" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/checkme"
+            android:layout_width="325dp"
+            android:layout_height="79dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.972"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/drink"
+            app:lottie_url="@raw/drink" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="231dp"
+            android:layout_height="181dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/checkme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

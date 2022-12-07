@@ -29,8 +29,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/drink"
-            app:lottie_url="@raw/drink"
+            app:lottie_rawRes="@raw/waiting"
+            app:lottie_url="@raw/waiting"
             tools:ignore="ImageContrastCheck" />
 
         <TextView
@@ -87,8 +87,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/drink"
-                    app:lottie_url="@raw/drink" />
+                    app:lottie_rawRes="@raw/owl"
+                    app:lottie_url="@raw/owl" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/type"
